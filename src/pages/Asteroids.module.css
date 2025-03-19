@@ -1,0 +1,33 @@
+.distanceMode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+    font-size: 16px;
+}
+
+.distanceChooser {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    margin: 0 4px;
+    font-size: inherit;
+    font-family: inherit;
+    color: #000000;
+}
+
+.distanceChooser.active {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.showDangerousOnly {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+}
