@@ -1,7 +1,7 @@
+import { Header } from "../components/header/Header";
+
 export const Asteroids = () => {
     return (
-        <div>
-            <h1>Asteroids page</h1>
-        </div>
+        <div><Header/> Asteroids page</div>
     )
 }
