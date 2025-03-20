@@ -3,7 +3,17 @@ import { AsteroidCard } from "../components/asteroidCard/AsteroidCard";
 import { useState, useEffect } from "react";
 
 export const Asteroids = () => {
-    const [asteroids, setAsteroids] = useState([])
+    const [asteroids, setAsteroids] = useState<{name: string;
+        date: string;
+        distance: {
+            kilometers: number;
+            lunar: number;
+        };
+        size: number;
+        id: string;
+        isDangerous: boolean;
+    }[]>([]);
+
     const [onlyDangerous, setOnlyDangerous] = useState(false);
     const [isKilometers, setIsKilometers] = useState(true);
 
@@ -12,22 +22,24 @@ export const Asteroids = () => {
     };
 
     useEffect(()=>{
-        const  result = fetch("https://api.nasa.gov/neo/rest/v1/feed?api_key=DEMO_KEY").then((res)=>{
-            return res.json()
-        }).then((response)=>{
-            let rawAsteroids = []
-            for (const data in response.near_earth_objects) {
-                rawAsteroids = rawAsteroids.concat(response.near_earth_objects[data])
-            }
-            const asteroids = rawAsteroids.map(item=>{
-                const size = Math.trunc((item.estimated_diameter.meters.estimated_diameter_max + item.estimated_diameter.meters.estimated_diameter_min) / 2);
-                const close = item.close_approach_data[0];
-                const date = new Date(close.close_approach_date); 
-                const formattedDate = date.toLocaleDateString('ru-RU', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric'
-                });
+
+        try {
+            const  result = fetch(`https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.REACT_APP_NASA_API_KEY}`).then((res)=>{
+                return res.json()
+            }).then((response)=>{
+                let rawAsteroids = []
+                for (const data in response.near_earth_objects) {
+                    rawAsteroids = rawAsteroids.concat(response.near_earth_objects[data])
+                }
+                const asteroids = rawAsteroids.map(item=>{
+                    const size = Math.trunc((item.estimated_diameter.meters.estimated_diameter_max + item.estimated_diameter.meters.estimated_diameter_min) / 2);
+                    const close = item.close_approach_data[0];
+                    const date = new Date(close.close_approach_date); 
+                    const formattedDate = date.toLocaleDateString('ru-RU', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
                 
                 return {
                     name: item.name,
@@ -39,17 +51,22 @@ export const Asteroids = () => {
                     },
                     isDangerous: item.is_potentially_hazardous_asteroid,
                     id: item.id,
-                }
-            })
+                 }
+                })
+                setAsteroids(asteroids);
 
-            setAsteroids(asteroids)
-        })
+            })
+        
+
+        } catch (err) {
+            console.log(err)
+        }
     }, [])
     
     return <div> 
         Home 
         <div className={styles.showDangerousOnly}>
-            <input type="checkbox" value={onlyDangerous} onChange={() => setOnlyDangerous(!onlyDangerous)}/> 
+            <input type="checkbox" value={onlyDangerous as unknown as string} onChange={() => setOnlyDangerous(!onlyDangerous)}/> 
             Показать только опасные
         </div>
         <div className={styles.distanceMode}>

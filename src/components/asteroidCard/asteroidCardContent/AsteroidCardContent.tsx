@@ -1,9 +1,21 @@
 import React from 'react';
 import styles from './Content.module.css';
 
+type AsteroidCardContentProps = {
+    name: string;
+    date: string;
+    distance: {
+        kilometers: number;
+        lunar: number;
+    };
+    size: number;
+    isDangerous: boolean;
+    isKilometers: boolean;
+}
+
 const LUNAR_DISTANCE = 384400; 
 
-export const AsteroidCardContent = (props) => {
+export const AsteroidCardContent = (props: AsteroidCardContentProps) => {
     const {name, date, distance, size, isKilometers} = props;
 
     const formatDistance = () => {
