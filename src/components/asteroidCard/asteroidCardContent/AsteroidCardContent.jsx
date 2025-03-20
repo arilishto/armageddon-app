@@ -8,10 +8,9 @@ export const AsteroidCardContent = (props) => {
 
     const formatDistance = () => {
         if (isKilometers) {
-            return `${distance.toLocaleString('ru-RU')} км`;
+            return `${distance.kilometers.toLocaleString('ru-RU', {maximumFractionDigits: 0})} км`;
         } else {
-            const lunarDistance = (distance / LUNAR_DISTANCE).toFixed(2);
-            return `${lunarDistance} лунных орбит`;
+            return `${distance.lunar.toLocaleString('ru-RU', {maximumFractionDigits: 2})} лунных орбит`;
         }
     };
 
@@ -20,7 +19,7 @@ export const AsteroidCardContent = (props) => {
                 <div className={styles.contentWrapper}>
                     <div className={styles.contentDate}>{`Дата: ${date}`}</div>
                     <div className={styles.contentDistance}>{`Расстояние: ${formatDistance()}`}</div>
-                    <div className={styles.contentSize}>{`Размер: ${size} м`}</div>
+                    <div className={styles.contentSize}>{`Размер: ${size.toLocaleString('ru-RU')} м`}</div>
                 </div>
             </div>)
 }
