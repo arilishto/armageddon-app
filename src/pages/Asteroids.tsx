@@ -1,6 +1,8 @@
 import styles from "./Asteroids.module.css";
 import { AsteroidCard } from "../components/asteroidCard/AsteroidCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AsteroidsContext } from "../components/asteroids-context/AsteroidsContext";
+
 
 export const Asteroids = () => {
     const [asteroids, setAsteroids] = useState<{
@@ -14,13 +16,6 @@ export const Asteroids = () => {
         id: string;
         isDangerous: boolean;
     }[]>([]);
-
-    const [onlyDangerous, setOnlyDangerous] = useState(false);
-    const [isKilometers, setIsKilometers] = useState(true);
-
-    const handleDistanceChange = (mode) => {
-        setIsKilometers(mode);
-    };
 
     useEffect(() => {
 
@@ -64,6 +59,8 @@ export const Asteroids = () => {
         }
     }, [])
 
+    const { onlyDangerous, setOnlyDangerous, distanceMode, setDistanceMode } = useContext(AsteroidsContext);
+
     return <div>
         Home
         <div className={styles.showDangerousOnly}>
@@ -71,26 +68,28 @@ export const Asteroids = () => {
             Показать только опасные
         </div>
         <div className={styles.distanceMode}>
-            Расстояние
+            <span>Расстояние</span>
             <button
-                className={`${styles.distanceChooser} ${isKilometers ? styles.active : ''}`}
-                onClick={() => handleDistanceChange(true)}>
+                onClick={() => setDistanceMode(true)}
+                className={`${styles.distanceChooser} ${distanceMode ? styles.active : ''}`}
+            >
                 в километрах
-            </button>,
+            </button>
+            <span>,</span>
             <button
-                className={`${styles.distanceChooser} ${!isKilometers ? styles.active : ''}`}
-                onClick={() => handleDistanceChange(false)}>
-                в дистанциях до Луны
+                onClick={() => setDistanceMode(false)}
+                className={`${styles.distanceChooser} ${!distanceMode ? styles.active : ''}`}
+            >
+                в дистанциях до луны
             </button>
         </div>
-
 
         {
             onlyDangerous
                 ? asteroids.filter((item) => item.isDangerous).map((item) =>
-                    <AsteroidCard key={item.id} {...item} isKilometers={isKilometers} />)
+                    <AsteroidCard key={item.id} {...item} />)
                 : asteroids.map((item) =>
-                    <AsteroidCard key={item.id} {...item} isKilometers={isKilometers} />)
+                    <AsteroidCard key={item.id} {...item} />)
         }
     </div>
 }

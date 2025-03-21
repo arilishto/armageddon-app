@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './Content.module.css';
+import { AsteroidsContext } from '../../asteroids-context/AsteroidsContext';
 
 type AsteroidCardContentProps = {
     name: string;
@@ -10,20 +11,19 @@ type AsteroidCardContentProps = {
     };
     size: number;
     isDangerous: boolean;
-    isKilometers: boolean;
 }
 
 const LUNAR_DISTANCE = 384400;
 
 export const AsteroidCardContent = (props: AsteroidCardContentProps) => {
-    const { name, date, distance, size, isKilometers } = props;
+    const { name, date, distance, size } = props;
+    const { distanceMode } = useContext(AsteroidsContext);
 
     const formatDistance = () => {
-        if (isKilometers) {
+        if (distanceMode) {
             return `${distance.kilometers.toLocaleString('ru-RU', { maximumFractionDigits: 0 })} км`;
-        } else {
-            return `${distance.lunar.toLocaleString('ru-RU', { maximumFractionDigits: 2 })} лунных орбит`;
         }
+        return `${distance.lunar.toLocaleString('ru-RU', { maximumFractionDigits: 2 })} лунных орбит`;
     };
 
     return (<div className={styles.card}>

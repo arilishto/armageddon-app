@@ -2,26 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {RouterProvider} from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import { Asteroids } from './pages/Asteroids';
 import { Destruction } from './pages/Destruction';
 import { Asteroid } from './pages/Asteroid';
+import { AsteroidsContextProvider } from './components/asteroids-context/AsteroidsContext';
+
 
 const router = createBrowserRouter([
   {
     path: "/asteroids",
-    element: <Asteroids/>,
+    element: <Asteroids />,
   },
 
   {
     path: "/destruction",
-    element: <Destruction/>,
+    element: <Destruction />,
   },
 
   {
     path: "/asteroid/:id",
-    element: <Asteroid/>,
+    element: <Asteroid />,
   },
 
 ]);
@@ -29,7 +31,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AsteroidsContextProvider>
+      <RouterProvider router={router} />
+    </AsteroidsContextProvider>
   </React.StrictMode>
 );
 
