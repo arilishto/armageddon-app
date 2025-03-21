@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Header } from "../components/header/Header";
 
 export const Asteroid = () => {
 
@@ -6,6 +7,7 @@ export const Asteroid = () => {
 
     return (
         <div>
+            <Header />
             <h1>{`Asteroid page: ${id}`}</h1>
         </div>
     )

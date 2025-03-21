@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './Content.module.css';
-import { AsteroidsContext } from '../../asteroids-context/AsteroidsContext';
 
 type AsteroidCardContentProps = {
     name: string;
@@ -11,13 +10,13 @@ type AsteroidCardContentProps = {
     };
     size: number;
     isDangerous: boolean;
+    distanceMode: boolean;
 }
 
 const LUNAR_DISTANCE = 384400;
 
 export const AsteroidCardContent = (props: AsteroidCardContentProps) => {
-    const { name, date, distance, size } = props;
-    const { distanceMode } = useContext(AsteroidsContext);
+    const { name, date, distance, size, distanceMode } = props;
 
     const formatDistance = () => {
         if (distanceMode) {

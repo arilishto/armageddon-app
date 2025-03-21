@@ -2,7 +2,7 @@ import styles from "./Asteroids.module.css";
 import { AsteroidCard } from "../components/asteroidCard/AsteroidCard";
 import { useState, useEffect, useContext } from "react";
 import { AsteroidsContext } from "../components/asteroids-context/AsteroidsContext";
-
+import { Header } from "../components/header/Header";
 
 export const Asteroids = () => {
     const [asteroids, setAsteroids] = useState<{
@@ -18,7 +18,6 @@ export const Asteroids = () => {
     }[]>([]);
 
     useEffect(() => {
-
         try {
             const result = fetch(`https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.REACT_APP_NASA_API_KEY}`).then((res) => {
                 return res.json()
@@ -50,10 +49,7 @@ export const Asteroids = () => {
                     }
                 })
                 setAsteroids(asteroids);
-
             })
-
-
         } catch (err) {
             console.log(err)
         }
@@ -61,37 +57,39 @@ export const Asteroids = () => {
 
     const { onlyDangerous, setOnlyDangerous, distanceMode, setDistanceMode } = useContext(AsteroidsContext);
 
-    return <div>
-        Home
-        <div className={styles.showDangerousOnly}>
-            <input type="checkbox" value={onlyDangerous as unknown as string} onChange={() => setOnlyDangerous(!onlyDangerous)} />
-            Показать только опасные
-        </div>
-        <div className={styles.distanceMode}>
-            <span>Расстояние</span>
-            <button
-                onClick={() => setDistanceMode(true)}
-                className={`${styles.distanceChooser} ${distanceMode ? styles.active : ''}`}
-            >
-                в километрах
-            </button>
-            <span>,</span>
-            <button
-                onClick={() => setDistanceMode(false)}
-                className={`${styles.distanceChooser} ${!distanceMode ? styles.active : ''}`}
-            >
-                в дистанциях до луны
-            </button>
-        </div>
+    return (
+        <div className={styles.container}>
+            <div className={styles.showDangerousOnly}>
+                <input type="checkbox" value={onlyDangerous as unknown as string} onChange={() => setOnlyDangerous(!onlyDangerous)} />
+                Показать только опасные
+            </div>
+            <div className={styles.distanceMode}>
+                <span>Расстояние</span>
+                <button
+                    onClick={() => setDistanceMode(true)}
+                    className={`${styles.distanceChooser} ${distanceMode ? styles.active : ''}`}
+                >
+                    в километрах
+                </button>
+                <span>,</span>
+                <button
+                    onClick={() => setDistanceMode(false)}
+                    className={`${styles.distanceChooser} ${!distanceMode ? styles.active : ''}`}
+                >
+                    в дистанциях до луны
+                </button>
+            </div>
 
-        {
-            onlyDangerous
-                ? asteroids.filter((item) => item.isDangerous).map((item) =>
-                    <AsteroidCard key={item.id} {...item} />)
-                : asteroids.map((item) =>
-                    <AsteroidCard key={item.id} {...item} />)
-        }
-    </div>
+            <div className={styles.asteroidsList}>
+                {onlyDangerous
+                    ? asteroids.filter((item) => item.isDangerous).map((item) =>
+                        <AsteroidCard key={item.id} {...item} />)
+                    : asteroids.map((item) =>
+                        <AsteroidCard key={item.id} {...item} />)
+                }
+            </div>
+        </div>
+    );
 }
 
 const generateAsteroids = () => {
