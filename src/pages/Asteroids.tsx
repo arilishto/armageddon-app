@@ -58,35 +58,38 @@ export const Asteroids = () => {
     const { onlyDangerous, setOnlyDangerous, distanceMode, setDistanceMode } = useContext(AsteroidsContext);
 
     return (
-        <div className={styles.container}>
-            <div className={styles.showDangerousOnly}>
-                <input type="checkbox" value={onlyDangerous as unknown as string} onChange={() => setOnlyDangerous(!onlyDangerous)} />
-                Показать только опасные
-            </div>
-            <div className={styles.distanceMode}>
-                <span>Расстояние</span>
-                <button
-                    onClick={() => setDistanceMode(true)}
-                    className={`${styles.distanceChooser} ${distanceMode ? styles.active : ''}`}
-                >
-                    в километрах
-                </button>
-                <span>,</span>
-                <button
-                    onClick={() => setDistanceMode(false)}
-                    className={`${styles.distanceChooser} ${!distanceMode ? styles.active : ''}`}
-                >
-                    в дистанциях до луны
-                </button>
-            </div>
+        <div>
+            <Header />
+            <div className={styles.container}>
+                <div className={styles.showDangerousOnly}>
+                    <input type="checkbox" value={onlyDangerous as unknown as string} onChange={() => setOnlyDangerous(!onlyDangerous)} />
+                    Показать только опасные
+                </div>
+                <div className={styles.distanceMode}>
+                    <span>Расстояние</span>
+                    <button
+                        onClick={() => setDistanceMode(true)}
+                        className={`${styles.distanceChooser} ${distanceMode ? styles.active : ''}`}
+                    >
+                        в километрах
+                    </button>
+                    <span>,</span>
+                    <button
+                        onClick={() => setDistanceMode(false)}
+                        className={`${styles.distanceChooser} ${!distanceMode ? styles.active : ''}`}
+                    >
+                        в дистанциях до луны
+                    </button>
+                </div>
 
-            <div className={styles.asteroidsList}>
-                {onlyDangerous
-                    ? asteroids.filter((item) => item.isDangerous).map((item) =>
-                        <AsteroidCard key={item.id} {...item} />)
-                    : asteroids.map((item) =>
-                        <AsteroidCard key={item.id} {...item} />)
-                }
+                <div className={styles.asteroidsList}>
+                    {onlyDangerous
+                        ? asteroids.filter((item) => item.isDangerous).map((item) =>
+                            <AsteroidCard key={item.id} {...item} />)
+                        : asteroids.map((item) =>
+                            <AsteroidCard key={item.id} {...item} />)
+                    }
+                </div>
             </div>
         </div>
     );

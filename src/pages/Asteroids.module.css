@@ -1,33 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.showDangerousOnly {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
 .distanceMode {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin: 16px 0;
+    gap: 10px;
     font-size: 16px;
 }
 
 .distanceChooser {
     background: none;
     border: none;
-    text-decoration: underline;
+    color: #007bff;
     cursor: pointer;
-    padding: 0;
-    margin: 0 4px;
-    font-size: inherit;
-    font-family: inherit;
-    color: #000000;
+    padding: 5px 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.distanceChooser:hover {
+    text-decoration: underline;
 }
 
 .distanceChooser.active {
-    color: #000000;
-    font-weight: bold;
-    text-decoration: none;
+    color: #333;
+    text-decoration: underline;
 }
 
-.showDangerousOnly {
+.asteroidsList {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 16px 0;
+    flex-direction: column;
+    gap: 20px;
 }
