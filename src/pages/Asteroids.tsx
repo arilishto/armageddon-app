@@ -3,7 +3,7 @@ import { AsteroidCard } from "../components/asteroidCard/AsteroidCard";
 import { useState, useEffect, useContext } from "react";
 import { AsteroidsContext } from "../components/asteroids-context/AsteroidsContext";
 import { Header } from "../components/header/Header";
-
+import { getUserKey } from "../utils/getUserKey";
 export const Asteroids = () => {
     const [asteroids, setAsteroids] = useState<{
         name: string;
@@ -19,7 +19,7 @@ export const Asteroids = () => {
 
     useEffect(() => {
         try {
-            const result = fetch(`https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.REACT_APP_NASA_API_KEY}`).then((res) => {
+            const result = fetch(`https://api.nasa.gov/neo/rest/v1/feed?api_key=${getUserKey()}`).then((res) => {
                 return res.json()
             }).then((response) => {
                 let rawAsteroids = []
