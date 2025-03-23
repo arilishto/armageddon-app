@@ -24,11 +24,12 @@
 .distanceChooser {
     background: none;
     border: none;
-    color: #007bff;
+    color: #333;
     cursor: pointer;
     padding: 5px 10px;
     font-size: 16px;
     transition: all 0.3s ease;
+    text-decoration: underline;
 }
 
 .distanceChooser:hover {
@@ -37,7 +38,8 @@
 
 .distanceChooser.active {
     color: #333;
-    text-decoration: underline;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .asteroidsList {
