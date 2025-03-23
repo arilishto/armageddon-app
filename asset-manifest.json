@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/armageddon-app/static/css/main.2dc6c57f.css",
-    "main.js": "/armageddon-app/static/js/main.21882d40.js",
+    "main.css": "/armageddon-app/static/css/main.45c7befe.css",
+    "main.js": "/armageddon-app/static/js/main.7025f5dc.js",
     "static/js/453.faf6e8cc.chunk.js": "/armageddon-app/static/js/453.faf6e8cc.chunk.js",
     "index.html": "/armageddon-app/index.html",
-    "main.2dc6c57f.css.map": "/armageddon-app/static/css/main.2dc6c57f.css.map",
-    "main.21882d40.js.map": "/armageddon-app/static/js/main.21882d40.js.map",
+    "main.45c7befe.css.map": "/armageddon-app/static/css/main.45c7befe.css.map",
+    "main.7025f5dc.js.map": "/armageddon-app/static/js/main.7025f5dc.js.map",
     "453.faf6e8cc.chunk.js.map": "/armageddon-app/static/js/453.faf6e8cc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2dc6c57f.css",
-    "static/js/main.21882d40.js"
+    "static/css/main.45c7befe.css",
+    "static/js/main.7025f5dc.js"
   ]
 }
