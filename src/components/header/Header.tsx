@@ -10,7 +10,7 @@ export const Header = memo(() => {
     
     return <div className={styles.container}>
         <div>
-            <div>ARMAGEDDON V</div>
+            <h1>ARMAGEDDON V</h1>
             <div>Сервис мониторинга и уничтожения астероидов, опасно подлетающих к Земле.</div>
         </div>
         <div>
@@ -23,7 +23,7 @@ export const Header = memo(() => {
                 : <div className={`${styles.status} ${styles.authorized}`}>Api key provided</div>
             }
         </div>
-        {inputOpened ? <input onChange={(ev)=>{
+        {inputOpened ? <input data-testid="api_key_input" onChange={(ev)=>{
             if (ev.target.value.length == 40){
                 localStorage.setItem("API_KEY", ev.target.value);
                 setInputOpened(false);
