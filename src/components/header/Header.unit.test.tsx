@@ -21,9 +21,11 @@ describe("Header", () => {
     it("should contain button, after click should hide button and display input", () => {
         const button = screen.getByText("Unauthorized");
         expect(button).toBeInTheDocument();
+        expect(screen.queryByTestId("api_key_input")).not.toBeInTheDocument();
         fireEvent.click(button)
         waitFor(() => 
             expect(button).not.toBeInTheDocument());
+        expect(screen.getByTestId("api_key_input")).toBeInTheDocument();
     });
     
 })
