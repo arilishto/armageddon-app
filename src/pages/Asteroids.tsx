@@ -71,9 +71,8 @@ export const Asteroids = () => {
                         onClick={() => setDistanceMode(true)}
                         className={`${styles.distanceChooser} ${distanceMode ? styles.active : ''}`}
                     >
-                        в километрах
+                        в километрах,
                     </button>
-                    <span>,</span>
                     <button
                         onClick={() => setDistanceMode(false)}
                         className={`${styles.distanceChooser} ${!distanceMode ? styles.active : ''}`}
