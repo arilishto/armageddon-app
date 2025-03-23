@@ -1,9 +1,39 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px;
     padding: 20px 0;
     width: 80%;
+    margin: 0 auto;
+}
+
+.spaceBanner {
+    width: 90%;
+    max-width: 920px;
+    height: 200px;
+    background-image: url('../components/banner/space.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin: 8px auto;
+}
+
+.banner {
+    width: 90%;
+    max-width: 920px;
+    height: auto;
+    aspect-ratio: 4.6 / 1;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid black;
+    background: linear-gradient(90deg, #CFF37D 0%, #7DE88C 100%);
+}
+
+.filtersContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 920px;
     margin: 0 auto;
 }
 
@@ -21,14 +51,45 @@
     font-size: 16px;
 }
 
-.distanceChooser {
+.navigationButtons {
+    display: flex;
+    gap: 16px;
+}
+
+.navigationButton {
     background: none;
     border: none;
-    color: #007bff;
+    color: #000000;
     cursor: pointer;
     padding: 5px 10px;
     font-size: 16px;
     transition: all 0.3s ease;
+    text-decoration: underline;
+}
+
+.navigationButton:hover {
+    text-decoration: underline;
+}
+
+.navigationButton.active {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navigationButton.inactive {
+    text-decoration: underline;
+}
+
+.distanceChooser {
+    background: none;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: underline;
 }
 
 .distanceChooser:hover {
@@ -37,11 +98,108 @@
 
 .distanceChooser.active {
     color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.distanceChooser.inactive {
     text-decoration: underline;
 }
 
 .asteroidsList {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 1100px) {
+    .container {
+        width: 100%;
+        padding: 0 16px;
+        gap: 4px;
+    }
+
+    .spaceBanner {
+        display: none;
+    }
+
+    .banner {
+        display: none;
+    }
+
+    .serviceText {
+        width: 288px;
+    }
+
+    .navigationButtons {
+        margin-bottom: 4px;
+    }
+
+    .divider {
+        width: 100%;
+        height: 1px;
+        background-color: #000;
+        margin-bottom: 4px;
+    }
+
+    .showDangerousOnly {
+        margin-bottom: 4px;
+    }
+
+    .distanceMode {
+        margin-bottom: 4px;
+        font-size: 14px;
+        gap: 4px;
+    }
+
+    .distanceChooser {
+        font-size: 14px;
+        padding: 2px 4px;
+    }
+
+    .asteroidsList {
+        gap: 8px;
+    }
+
+    .filtersContainer {
+        width: 100%;
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .filtersContainer {
+        width: 100%;
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 0;
+        gap: 0;
+        margin: 0 auto;
+    }
+
+    .showDangerousOnly {
+        margin: 0;
+        padding: 0;
+    }
+
+    .distanceMode {
+        margin: 0;
+        padding: 0;
+    }
+
+    .asteroidsList {
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
 }

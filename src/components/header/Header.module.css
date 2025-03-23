@@ -1,12 +1,14 @@
 .container {
-    width: 80%;
+    width: 920px;
+    height: 120px;
     margin: 0 auto;
-    padding: 16px 0;
+    padding: 16px 0 0 0;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
     border-bottom: 1px solid #E3E5E5;
+    position: relative;
 }
 
 .container > div:first-child {
@@ -16,9 +18,9 @@
 .container > div:first-child > h1 {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 48px;
-    margin: 0 0 8px 0;
+    margin: 0;
     color: #000000;
 }
 
@@ -27,7 +29,9 @@
     color: #000000;
     font-size: 16px;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 20px;
+    margin-top: 0;
+    width: 400px;
 }
 
 .container > div:nth-child(2) {
@@ -49,14 +53,27 @@
     color: #070707;
 }
 
+.navigationButtons {
+    display: flex;
+    gap: 24px;
+    position: absolute;
+    top: 16px;
+    right: 0;
+    width: 217px;
+    height: 20px;
+}
+
 .status {
-    margin-top: 12px;
+    position: absolute;
+    top: 48px;
+    right: 0;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
     cursor: pointer;
+    margin: 0;
 }
 
 .unauthorized {
@@ -67,5 +84,105 @@
 .authorized {
     background-color: #D4EDDA;
     color: #155724;
+}
+
+.navigationButton {
+    background: none;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    padding: 0;
+    font-size: 16px;
+    line-height: 20px;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+}
+
+.navigationButton:hover {
+    text-decoration: underline;
+}
+
+.navigationButton.active {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navigationButton.inactive {
+    text-decoration: underline;
+}
+
+@media (max-width: 1100px) {
+    .container {
+        width: 100%;
+        height: auto;
+        padding: 8px 16px;
+    }
+
+    .navigationButtons {
+        position: static;
+        width: auto;
+        height: auto;
+    }
+
+    .status {
+        position: static;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 0;
+        border-bottom: none;
+        height: auto;
+    }
+
+    .container > div:first-child {
+        max-width: 100%;
+    }
+
+    .container > div:first-child > h1 {
+        font-size: 24px;
+        line-height: 32px;
+        margin: 0 0 4px 0;
+    }
+
+    .container > div:first-child > div {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 8px;
+    }
+
+    .container > div:nth-child(2) {
+        padding-top: 0;
+        gap: 16px;
+        border-bottom: 1px solid #E3E5E5;
+        padding-bottom: 8px;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .container > div:nth-child(3) {
+        display: none;
+    }
+
+    .navigationButtons {
+        position: static;
+        width: auto;
+        height: auto;
+        gap: 16px;
+    }
+
+    .navigationButton {
+        padding: 0;
+    }
+
+    .status {
+        display: none;
+    }
 }
 

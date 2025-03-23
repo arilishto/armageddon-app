@@ -7,6 +7,7 @@ import { Destruction } from './pages/Destruction';
 import { Asteroid } from './pages/Asteroid';
 import { AsteroidsContextProvider } from './components/asteroids-context/AsteroidsContext';
 import { Header } from './components/header/Header';
+import { Footer } from './components/footer/Footer';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
@@ -25,6 +26,7 @@ root.render(
               <Route path="/asteroid/:id" element={<Asteroid />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </HashRouter>
     </AsteroidsContextProvider>
