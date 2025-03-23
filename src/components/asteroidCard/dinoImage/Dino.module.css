@@ -1,0 +1,18 @@
+.dinoCardImage {
+    width: 56.000003814697266px;
+    height: 48px;
+    position: absolute;
+    top: 152px;
+    left: 16px;
+    z-index: 1;
+}
+
+@media (max-width: 1100px) {
+    .dinoCardImage {
+        width: 36px;
+        height: 31px;
+        top: auto;
+        bottom: 8px;
+        left: 8px;
+    }
+}

@@ -1,45 +1,71 @@
 .container {
     width: 80%;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 16px 0;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #E3E5E5;
 }
 
 .container > div:first-child {
     max-width: 60%;
 }
 
-.container > div:first-child > div:first-child {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 8px;
+.container > div:first-child > h1 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    margin: 0 0 8px 0;
+    color: #000000;
 }
 
-.container > div:first-child > div:last-child {
-    color: #666;
-    font-size: 14px;
+.container > div:first-child > div {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
 }
 
-.container > div:last-child > div {
+.container > div:nth-child(2) {
     display: flex;
-    gap: 20px;
+    gap: 24px;
+    padding-top: 12px;
 }
 
 .container a {
     text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    color: #000000;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
 }
 
 .container a:hover {
-    color: #007bff;
-    background-color: rgba(0, 123, 255, 0.1);
+    color: #070707;
+}
+
+.status {
+    margin-top: 12px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.unauthorized {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+.authorized {
+    background-color: #D4EDDA;
+    color: #155724;
 }
 

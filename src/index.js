@@ -1,38 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { RouterProvider } from "react-router-dom";
-import { createHashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Asteroids } from './pages/Asteroids';
 import { Destruction } from './pages/Destruction';
 import { Asteroid } from './pages/Asteroid';
 import { AsteroidsContextProvider } from './components/asteroids-context/AsteroidsContext';
-
-
-const router = createHashRouter([
-  {
-    path: "/asteroids",
-    element: <Asteroids />,
-  },
-
-  {
-    path: "/destruction",
-    element: <Destruction />,
-  },
-
-  {
-    path: "/asteroid/:id",
-    element: <Asteroid />,
-  },
-
-]);
+import { Header } from './components/header/Header';
+import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AsteroidsContextProvider>
-      <RouterProvider router={router} />
+      <HashRouter>
+        <div className="App">
+          <Header />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Navigate to="/asteroids" replace />} />
+              <Route path="/asteroids" element={<Asteroids />} />
+              <Route path="/destruction" element={<Destruction />} />
+              <Route path="/asteroid/:id" element={<Asteroid />} />
+            </Routes>
+          </main>
+        </div>
+      </HashRouter>
     </AsteroidsContextProvider>
   </React.StrictMode>
 );

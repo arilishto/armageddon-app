@@ -1,6 +1,7 @@
 import { AsteroidCardAction } from "./asteroidCardAction/AsteroidCardAction";
 import { AsteroidCardContentContainer } from "./asteroidCardContent/AsteroidCardContentContainer";
 import { AsteroidCardImage } from "./asteroidCardImage/AsteroidCardImage";
+import { DinoCardImage } from "./dinoImage/DinoCardImage";
 import styles from "./Card.module.css";
 import { useContext } from "react";
 import { AsteroidsContext } from "../asteroids-context/AsteroidsContext";
@@ -25,6 +26,7 @@ export const AsteroidCard = (props: AsteroidCardProps) => {
 
     return (<div data-testid="asteroid-card" className={`${styles.card} ${isDangerous ? styles.cardRed : styles.regularCard}`}>
         <AsteroidCardImage />
+        <DinoCardImage />
         <AsteroidCardContentContainer 
             id={id}
             name={name} 

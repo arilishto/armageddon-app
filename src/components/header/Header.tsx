@@ -4,7 +4,6 @@ import { getUserKey } from "../../utils/getUserKey";
 import { useState } from "react";
 import { memo } from "react";
 
-
 export const Header = memo(() => {
     const [inputOpened, setInputOpened] = useState(false);
     
@@ -14,8 +13,8 @@ export const Header = memo(() => {
             <div>Сервис мониторинга и уничтожения астероидов, опасно подлетающих к Земле.</div>
         </div>
         <div>
-            <Link to={"/asteroids"}>Астероиды</Link>
-            <Link to={"/destruction"}>Уничтожение</Link>
+            <Link to="/asteroids">Астероиды</Link>
+            <Link to="/destruction">Уничтожение</Link>
         </div>
         <div>
             {getUserKey() === "DEMO_KEY" 
@@ -24,11 +23,11 @@ export const Header = memo(() => {
             }
         </div>
         {inputOpened ? <input data-testid="api_key_input" onChange={(ev)=>{
-            if (ev.target.value.length == 40){
+            if (ev.target.value.length === 40){
                 localStorage.setItem("API_KEY", ev.target.value);
                 setInputOpened(false);
             }
         }
         }/> : null}
     </div>
-    })
+});

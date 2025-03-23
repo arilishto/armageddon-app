@@ -2,8 +2,8 @@ import styles from "./Asteroids.module.css";
 import { AsteroidCard } from "../components/asteroidCard/AsteroidCard";
 import { useState, useEffect, useContext } from "react";
 import { AsteroidsContext } from "../components/asteroids-context/AsteroidsContext";
-import { Header } from "../components/header/Header";
 import { getUserKey } from "../utils/getUserKey";
+
 export const Asteroids = () => {
     const [asteroids, setAsteroids] = useState<{
         name: string;
@@ -59,7 +59,6 @@ export const Asteroids = () => {
 
     return (
         <div>
-            <Header />
             <div className={styles.container}>
                 <div className={styles.showDangerousOnly}>
                     <input type="checkbox" value={onlyDangerous as unknown as string} onChange={() => setOnlyDangerous(!onlyDangerous)} />
